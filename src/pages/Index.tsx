@@ -100,10 +100,9 @@ const Index = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
-        <img src={heroImage} alt="Shreya - Fashion Creator" className="absolute inset-0 w-full h-full object-cover object-center" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-background"></div>
-        <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
+      <section id="home" className="relative h-[190vh] flex items-center justify-center overflow-hidden">
+        <img src={heroImage} alt="Shreya - Fashion Creator" className="absolute inset-0 w-full h-full object-cover object-center opacity-80" />
+        <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto" style={{paddingTop : "266px"}}>
           <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mb-4 animate-fade-in">Shreya</h2>
           <p className="text-xl sm:text-2xl md:text-3xl mb-6 font-light animate-fade-in" style={{ animationDelay: "0.2s" }}>Fashion Creator & Influencer</p>
           <p className="text-base sm:text-lg md:text-xl mb-8 animate-fade-in" style={{ animationDelay: "0.4s" }}>@themirandagirl</p>
