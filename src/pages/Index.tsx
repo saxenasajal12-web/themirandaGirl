@@ -52,7 +52,7 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#e5e1dc]">
+    <div className="min-h-screen bg-[#f5f3ed]">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
         <div className="container mx-auto px-4 py-4">
@@ -99,28 +99,85 @@ const Index = () => {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section id="home" className="relative h-[190vh] flex items-center justify-center overflow-hidden">
-        <img src={heroImage} alt="Shreya - Fashion Creator" className="absolute inset-0 w-full h-full object-cover object-center opacity-80" />
-        <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto" style={{paddingTop : "266px"}}>
-          <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mb-4 animate-fade-in">Shreya</h2>
-          <p className="text-xl sm:text-2xl md:text-3xl mb-6 font-light animate-fade-in" style={{ animationDelay: "0.2s" }}>Fashion Creator & Influencer</p>
-          <p className="text-base sm:text-lg md:text-xl mb-8 animate-fade-in" style={{ animationDelay: "0.4s" }}>@themirandagirl</p>
-        </div>
-      </section>
+      {/* Hero Section (fixed) */}
+      <section 
+  id="home" 
+  // Use dynamic viewport height (dvh) to perfectly account for mobile browser UI (address bars, etc.)
+  // Align content to the bottom with responsive padding based on viewport height (vh) for a more grounded feel
+  className="relative flex items-end justify-center min-h-[100dvh] overflow-hidden"
+>
+  {/* BACKGROUND IMAGE */}
+  <div className="absolute inset-0 w-full h-full">
+    <img 
+      src={heroImage} 
+      alt="Shreya - Fashion Creator" 
+      // This object-position strategy remains one of the best for portraits
+      className="w-full h-full object-cover object-top sm:object-center"
+    />
+  </div>
+
+  {/* GRADIENT OVERLAY */}
+  {/* A stronger gradient at the bottom ensures text is always readable */}
+  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent"></div>
+
+  {/* CONTENT */}
+  <div 
+    // Use viewport height for bottom padding so it scales with the screen
+    className="relative z-10 w-full max-w-6xl text-center text-white px-4 pb-[15vh] md:pb-[20vh]"
+  >
+    {/* HEADING with Fluid Typography */}
+    <h2 
+      className="font-bold leading-[1.1] drop-shadow-lg
+                 [font-size:clamp(2.75rem,10vw,6rem)]"
+    >
+      Shreya
+    </h2>
+    
+    {/* SUBHEADING with Fluid Typography */}
+    <p 
+      className="font-light mt-4 max-w-3xl mx-auto drop-shadow-md
+                 [font-size:clamp(1.125rem,4vw,1.875rem)]"
+    >
+      Fashion Creator & Influencer
+    </p>
+    
+    {/* HANDLE with Fluid Typography */}
+    <p 
+      className="font-mono tracking-widest mt-8 drop-shadow
+                 [font-size:clamp(1rem,2.5vw,1.25rem)]"
+    >
+      @themirandagirl
+    </p>
+  </div>
+</section>
 
       {/* About Section */}
-      <section id="about" className="py-20 px-4">
+      <section id="about" className="py-20 px-4 font-serif">
         <div className="container mx-auto max-w-4xl text-center">
           <h3 className="text-4xl md:text-5xl font-bold mb-8">Elevating Fashion Through Content</h3>
+
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-6">
-            Fashion content creator and influencer, bringing style inspiration to millions. Specializing in fashion trends, styling tips, and lifestyle content that resonates with a modern, fashion-forward audience.
+            Created engaging fashion content that inspires millions, specializing in trends, styling tips, and lifestyle content tailored for a modern, fashion-forward audience.
           </p>
+
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-6">
-            With a passion for authentic storytelling and a keen eye for emerging trends, Shreya has built a vibrant community of fashion enthusiasts who trust her unique perspective on style, beauty, and lifestyle.
+            Built a vibrant community of fashion enthusiasts through authentic storytelling and a keen eye for emerging trends, offering a unique perspective on style, beauty, and lifestyle.
           </p>
+
+          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-6">
+            Produced runway-inspired looks and accessible street style content, transforming fashion into an art form that empowers audiences to express their individuality. Recognized as an Emerging Fashion Creator of the Year, the work continues to push boundaries and inspire the next generation of style innovators.
+          </p>
+
+          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-6">
+            Collaborated with leading fashion brands, photographers, and stylists to curate visually stunning campaigns that merge creativity with commercial appeal. Every project emphasizes authenticity, innovation, and inclusivity.
+          </p>
+
+          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-6">
+            Actively experiments with new formats, from short-form social media reels to editorial photo spreads, ensuring content is fresh, relatable, and resonates with diverse audiences across platforms.
+          </p>
+
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-            From runway-inspired looks to accessible street style, Shreya's creative approach transforms fashion into an art form that empowers her audience to express their individuality. Recognized as an Emerging Fashion Creator of the Year, she continues to push boundaries and inspire the next generation of style innovators.
+            Committed to inspiring confidence and self-expression, the content not only showcases trends but also encourages audiences to embrace their personal style. With a consistent focus on quality, creativity, and engagement, the journey continues to redefine modern fashion storytelling.
           </p>
         </div>
       </section>
@@ -130,63 +187,84 @@ const Index = () => {
         <div className="container mx-auto max-w-5xl">
           <h3 className="text-4xl md:text-5xl font-bold mb-12 text-center text-gray-800">Profile</h3>
           
-          <div className="relative p-1 rounded-3xl bg-gradient-to-r from-purple-500 via-pink-500 to-red-500">
-            <div className="bg-white rounded-3xl p-10 shadow-lg">
+          <div className="relative p-1 rounded-3xl bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 hover:from-pink-400 hover:to-purple-600 transition-all duration-500">
+            <div className="bg-[#f6f1f1] rounded-3xl p-10 shadow-2xl">
               <div className="grid md:grid-cols-3 gap-10 items-center">
+                
                 {/* Profile Image */}
                 <div className="flex justify-center md:justify-start">
                   <img 
                     src={shreyaProfile} 
                     alt="Shreya Profile" 
-                    className="w-48 h-48 md:w-56 md:h-56 rounded-full object-cover shadow-2xl border-4 border-purple-300"
+                    className="w-48 h-48 md:w-56 md:h-56 rounded-full object-cover shadow-2xl border-4 border-purple-300 hover:scale-105 hover:shadow-purple-400/50 transition-transform duration-500"
                   />
                 </div>
 
                 {/* Personal Info */}
                 <div className="space-y-4 md:col-span-2 text-gray-800">
-                  <p className="flex items-center gap-2"><span className="font-semibold text-purple-600">Name:</span> Shreya Bhatt</p>
-                  <p className="flex items-center gap-2"><span className="font-semibold text-purple-600">Age:</span> 26</p>
-                  <p className="flex items-center gap-2"><span className="font-semibold text-purple-600">Height:</span> 5'4"</p>
-                  <p className="flex items-center gap-2"><span className="font-semibold text-purple-600">Phone:</span> 
-                    <a href="tel:7009790728" className="text-purple-700 hover:underline">7009790728</a>
-                  </p>
+                  <p className="flex items-center gap-2"><span className="font-semibold text-purple-600">Name:</span> Shreya </p>
+                  <p className="flex items-center gap-2"><span className="font-semibold text-purple-600">Age:</span> 24</p>
+                  <p className="flex items-center gap-2"><span className="font-semibold text-purple-600">Height:</span> 5'5"</p>
+                  
                   <p className="flex items-center gap-2"><span className="font-semibold text-purple-600">Based in:</span> Chandigarh</p>
 
-                  {/* Professional Work */}
+                  {/* Professional Work as badges */}
                   <p className="font-semibold text-lg text-gray-700 mt-4">Professional Work & Collaborations:</p>
-                  <ul className="list-disc list-inside space-y-2">
-                    <li className="hover:text-purple-600 transition-colors cursor-pointer">TV / Ad Shoot</li>
-                    <li className="hover:text-purple-600 transition-colors cursor-pointer">Modeling</li>
-                    <li className="hover:text-purple-600 transition-colors cursor-pointer">Photoshoot</li>
-                    <li className="hover:text-purple-600 transition-colors cursor-pointer">Brand Collaboration</li>
-                  </ul>
+                  <div className="flex flex-wrap gap-3">
+                    {["TV / Ad Shoot", "Modeling", "Photoshoot", "Brand Collaboration"].map((item, idx) => (
+                      <span key={idx} className="px-4 py-2 bg-purple-100 text-purple-800 rounded-full font-medium hover:bg-purple-200 transition-all cursor-pointer shadow-sm">
+                        {item}
+                      </span>
+                    ))}
+                  </div>
                 </div>
+
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Awards Section */}
-      <section id="awards" className="py-20 px-4 bg-secondary/30">
+      {/* Awards / Recognition Section */}
+      <section id="awards" className="py-20 px-4 bg-[#f5f3ed]">
         <div className="container mx-auto max-w-6xl">
-          <div className="flex items-center justify-center mb-12">
-            <Award className="w-12 h-12 text-accent mr-4" />
-            <h3 className="text-4xl md:text-5xl font-bold">Recognition</h3>
+          {/* Section Header */}
+          <div className="flex flex-col md:flex-row items-center justify-center mb-12 gap-4">
+            <Award className="w-12 h-12 text-accent" />
+            <h3 className="text-4xl md:text-5xl font-extrabold text-center">
+              Recognition
+            </h3>
           </div>
+
+          {/* Award Content */}
           <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Award Image */}
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <img src={awardImage} alt="InfluenceX25 Award" className="w-full h-auto" />
             </div>
+
+            {/* Award Details */}
             <div>
               <h4 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
-                InfluenceX25 Winner
+                Emerging Fashion Creator of the Year
               </h4>
-              <p className="text-xl md:text-2xl mb-6 font-semibold">Emerging Fashion Creator of the Year</p>
-              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                Recognized for exceptional creativity and influence in the fashion industry. This prestigious award celebrates innovation, authenticity, and the ability to inspire and connect with audiences.
+              <p className="text-xl md:text-2xl mb-6 font-semibold">
+                Awarded by InfluenceX25 at the National Event
               </p>
-              <a href="https://www.instagram.com/p/DO8GPDZkZHO/?igsh=YmF0aHd5NnVkbHdl" target="_blank" rel="noopener noreferrer" className="inline-block px-8 py-3 bg-accent text-accent-foreground rounded-full hover:opacity-90 transition-opacity font-semibold">
+              <p className="text-lg text-muted-foreground mb-4 leading-relaxed">
+                Recognized for outstanding creativity, originality, and influence in the fashion industry. 
+                This accolade highlights the ability to inspire and engage a growing audience through innovative fashion content.
+              </p>
+              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+                The recognition celebrates dedication, authenticity, and a commitment to shaping trends 
+                that resonate with a modern, style-conscious community.
+              </p>
+              <a 
+                href="https://www.instagram.com/p/DO8GPDZkZHO/?igsh=YmF0aHd5NnVkbHdl" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-block px-8 py-3 bg-accent text-accent-foreground rounded-full hover:opacity-90 transition-opacity font-semibold"
+              >
                 View Award Post
               </a>
             </div>
@@ -219,18 +297,31 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-primary/10 via-accent/10 to-secondary/10">
+      <section className="py-20 px-4 bg-[#f5f3ed]">
         <div className="container mx-auto max-w-4xl text-center">
           <h3 className="text-4xl md:text-5xl font-bold mb-6">Let's Collaborate</h3>
-          <p className="text-lg md:text-xl text-muted-foreground mb-12">Available for brand partnerships, collaborations, and creative projects</p>
+          <p className="text-lg md:text-xl text-muted-foreground mb-12">
+            Available for brand partnerships, collaborations, and creative projects
+          </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <Link to="/contact" className="flex items-center gap-3 px-8 py-4 bg-primary text-primary-foreground rounded-full hover:opacity-90 transition-opacity font-semibold text-lg">
+            <Link
+              to="/contact"
+              className="flex items-center gap-3 px-8 py-4 bg-primary text-primary-foreground rounded-full hover:opacity-90 transition-opacity font-semibold text-lg"
+            >
               <Mail className="w-6 h-6" /> Contact Form
             </Link>
-            <a href="https://mail.google.com/mail/u/1/?view=cm&fs=1&to=work.themirandagirl@gmail.com&tf=1" className="flex items-center gap-3 px-8 py-4 bg-accent text-accent-foreground rounded-full hover:opacity-90 transition-opacity font-semibold text-lg">
+            <a
+              href="https://mail.google.com/mail/u/1/?view=cm&fs=1&to=work.themirandagirl@gmail.com&tf=1"
+              className="flex items-center gap-3 px-8 py-4 bg-accent text-accent-foreground rounded-full hover:opacity-90 transition-opacity font-semibold text-lg"
+            >
               <Mail className="w-6 h-6" /> Email Me
             </a>
-            <a href="https://www.instagram.com/themirandagirl/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-8 py-4 bg-secondary text-secondary-foreground rounded-full hover:opacity-90 transition-opacity font-semibold text-lg">
+            <a
+              href="https://www.instagram.com/themirandagirl/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 px-8 py-4 bg-secondary text-secondary-foreground rounded-full hover:opacity-90 transition-opacity font-semibold text-lg"
+            >
               <Instagram className="w-6 h-6" /> @themirandagirl
             </a>
           </div>
